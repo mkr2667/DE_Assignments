@@ -1,0 +1,112 @@
+Q1)
+Sales
+Transaction_ID | amount | Customer_ID | Date | num_units | product_ID | weeks
+
+Product
+Product_ID | Product_Name | Product_Category
+
+List out the products that don’t have any sales in last two consecutive weeks
+
+Select p.product_ID,p.Product_Name from Sales s inner join Product  p on s.product_ID=p.Product_ID where week not in (week n, week n-1 )
+
+List out the products that don’t have any sales in any two consecutive weeks
+
+Select p.product_ID,p.Product_Name,lead(weeks) as l_week over(partition by Product_ID order by weeks) from Sales s inner join Product  p on s.product_ID=p.Product_ID where week - l_week>2;
+
+Q2)
+Write an SQL query to find employee_id of all employees that directly or indirectly report their work to the head of the company.
+The indirect relation between managers will not exceed 3 managers as the company is small.
+Return result table in any order without duplicates.
+The query result format is in the following example:
+Employees table:
++-------------+---------------+------------+
+| employee_id | employee_name | manager_id |
++-------------+---------------+------------+
+| 1           | Boss          | 1          |
+| 3           | Alice         | 3          |
+| 2           | Bob           | 1          |
+| 4           | Daniel        | 2          |
+| 7           | Luis          | 4          |
+| 8           | Jhon          | 3          |
+| 9           | Angela        | 8          |
+| 77          | Robert        | 1          |
++-------------+---------------+------------+
+Output should look like:
++-------------+
+| employee_id |
++-------------+
+| 2           |
+| 77          |
+| 4           |
+| 7           |
++-------------+
+Explanation:
+The head of the company is the employee with employee_id 1.
+The employees with employee_id 2 and 77 report their work directly to the head of the company.
+The employee with employee_id 4 report his work indirectly to the head of the company 4 --> 2 --> 1. 
+The employee with employee_id 7 report his work indirectly to the head of the company 7 --> 4 --> 2 --> 1.
+The employees with employee_id 3, 8 and 9 don't report their work to the head of company directly or indirectly.
+
+Data population:
+-- create a table
+CREATE TABLE employee (
+  employee_id INTEGER PRIMARY KEY,
+  employee_name TEXT NOT NULL,
+  manager_id INTEGER NOT NULL
+);
+-- insert some values
+INSERT INTO employee VALUES (1, 'Boss', '1');
+INSERT INTO employee VALUES (3, 'Alice', '3');
+INSERT INTO employee VALUES (2, 'Bob', '1');
+INSERT INTO employee VALUES (4, 'Daniel', '2');
+INSERT INTO employee VALUES (7, 'Luis', '4');
+INSERT INTO employee VALUES (8, 'Jhon', '3');
+INSERT INTO employee VALUES (9, 'Angela', '8');
+INSERT INTO employee VALUES (77, 'Robert', '1');
+-- fetch some values
+SELECT * FROM employee;
+
+
+Ans) SELECT e1.employee_id FROM employee e1 inner join employee e2 on e1.manager_id=e2.employee_id inner join employee e3 on e2.manager_id=e3.employee_id where e3.manager_id=1 AND e1.employee_id!=1;
+
+Q3) Find the result of different joins of Table A and Table B
+TableA	TableB
+Id                Id
+1		7
+2		NULL
+NULL		NULL
+3		3
+2		4
+4		4
+4		2
+6		2
+10		8
+
+Ans)
+Inner Join - Select * from TableA Inner Join TableB on TableA.id=TableB.id;
+Left Join - Select * from TableA Left Join TableB on TableA.id=TableB.id;
+Right Join - Select * from TableA Right Join TableB on TableA.id=TableB.id;
+Full Join(Outer Join) - Select * from TableA Full Join TableB on TableA.id=TableB.id
+Left Anti Join - Select * from TableA Left Join TableB on TableA.id=TableB.id Where Table.id IS NULL;
+
+Q4)
+
+CREATE TABLE CUSTOMERS2(
+  CUSTOMER_ID INT,
+  Date1 VARCHAR(6)  
+);
+
+INSERT INTO CUSTOMERS2 VALUES(1111,'202212');
+INSERT INTO CUSTOMERS2 VALUES(1111,'202210');
+INSERT INTO CUSTOMERS2 VALUES(1111,'202209');
+INSERT INTO CUSTOMERS2 VALUES(1111,'202301');
+INSERT INTO CUSTOMERS2 VALUES(2222,'202201');
+INSERT INTO CUSTOMERS2 VALUES(2222,'202205');
+INSERT INTO CUSTOMERS2 VALUES(2222,'202204');
+
+WITH CTE1 AS(
+SELECT CUSTOMER_ID, DATE1, MIN(DATE1) OVER(PARTITION BY CUSTOMER_ID) AS DATE2 FROM CUSTOMERS2)
+
+SELECT CUSTOMER_ID, DATEDIFF(month,LEFT(DATE2, 4) + '-' + RIGHT(DATE2, 2) + '-01', LEFT(DATE1, 4) + '-' + RIGHT(DATE1, 2) + '-01') AS DIFF_MONTHS FROM CTE1;
+
+Above Query works only in sql server.
