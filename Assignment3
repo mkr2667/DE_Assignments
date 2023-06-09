@@ -1,0 +1,22 @@
+Q) Explain about different file formats used in big data ecosystem along with its use cases?
+
+Ans) 
+1.CSV File Format:
+It is a delimited text file format and it is good option for compatability, spredsheet processing and human readable data.
+Use Cases: Exploratory analysis, Proof of Concept, Small Datasets.
+
+2.JSON File Format:
+It is Java Script Object Notation Format i.e Nested Dictionary file format and It is both human readable and machine readable.
+Use Cases: Mainly used for data exchange between web API's, Storing Log Files.
+
+3.AVRO File Format:
+It is good for Storing row data and useful when there is schema drift.
+Use Cases: Third party data collection with schema variation, 
+
+4.Parquet File Format:
+It is good for storing column data and useful when for reading data multiple times.
+Use Cases: Aggregated Data/Business Data
+
+5.ORC File Format: (Optimized Row column format)
+It is good for storing column data and useful for storing write once data.
+Use Cases: Historical or Archiving Data, Transactional Data.
