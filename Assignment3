@@ -1,4 +1,4 @@
-Q) Explain about different file formats used in big data ecosystem along with its use cases?
+Q1) Explain about different file formats used in big data ecosystem along with its use cases?
 
 Ans) 
 1.CSV File Format:
@@ -20,3 +20,6 @@ Use Cases: Aggregated Data/Business Data
 5.ORC File Format: (Optimized Row column format)
 It is good for storing column data and useful for storing write once data.
 Use Cases: Historical or Archiving Data, Transactional Data.
+
+Q2) When Data is converted from ORC to Parquet only Mapper is used and not the Reducer Why?
+Ans) The convertion of Data can be performed by record to record basis and doesn't requrire any aggregation or reducer operations hence only mapper is launched without reducer. 
