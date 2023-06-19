@@ -1,0 +1,2 @@
+Q2) When Data is converted from ORC to Parquet only Mapper is used and not the Reducer Why?
+Ans) The convertion of Data can be performed by record to record basis and doesn't requrire any aggregation or reducer operations hence only mapper is launched without reducer. 
