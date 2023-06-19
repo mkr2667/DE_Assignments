@@ -1,0 +1,116 @@
+Assignment4
+
+Q) Different Methods of Spark Session?
+Ans) 
+newSession() -> creates a new session
+stop() -> stops a session
+createDataframe() -> creates a Dataframe
+createDataset() -> creates a Dataset
+emptyDataframe() -> creates an empty Dataframe
+emptyDataset() -> creates a Dataset
+read() -> read the data
+readstream() -> read the streaming data
+sparkcontext() -> creates a new sparkcontext
+sqlcontext() -> creates a new sqlcontext
+
+https://sparkbyexamples.com/spark/sparksession-explained-with-examples/#:~:text=master()%2C%20appName()%20and%20getOrCreate()%20are%20methods%20of%20SparkSession.
+
+Q1) Python Append vs Extend methods?
+Ans) Python append method adds an element at the end of the list and it can add only one element.
+
+Whereas python extends method iterates through the iterable and add those elements to the original list.
+
+https://www.freecodecamp.org/news/python-list-append-vs-python-list-extend/
+
+Q) Python Memory Mangement?
+Ans) The memory management in Python involves a private heap containing all objects and data structures.
+
+
+Q2) Primary Name Node vs Secondary Name Node vs Standby Name Node
+Ans) HDFS has a NameNode(Primary Name Node) and many Data Nodes and name node keep track of all the data present in a cluster by storing the metadata of the cluster along with edit logs.
+
+There are two types of HDFS Clusters:
+1.Without High Availability:
+In this case it contains Secondary Name Node along with Primary Name Node and Secondary Name acts as backup Name node and it contains backup of the fsimage and log files but when name node fails it cannot replace primary name node and perfom its duties in that case hadoop should manually intervene and rectify the problem.
+
+2.High Availability:
+In this case it contains Standby Name node along with Primary Name Node and it contains the snapshot of Priamry Node as fsimage and log files backup and if primary name node fails in that case it assumes the responsibility acts as a primary Name node. 
+
+https://youtu.be/mJZjD2FkOjU
+
+
+Q4) Spark Session Vs Spark Context?
+Ans) https://youtu.be/ngWCBq58CJs
+
+https://youtu.be/MDbJoaqfBVc
+
+
+Q9) Hive Date functions
+Ans) datediff(), monthbetween(),dateformat()
+
+Q10) Hive String functions
+Ans) length, reverse
+
+
+Q6) Pandas Basic functions
+Ans) read_csv(), head(), describe(), astype(), loc[:], value_counts(), drop_duplicates(), groupby(), fillna(), 
+
+https://www.analyticsvidhya.com/blog/2021/05/pandas-functions-13-most-important/
+
+Q7) Numpy Basic functions
+Ans) min, max, shape, reshape, transpose
+
+Q8) Rdd Basic functions
+Ans) 
+Map(func): The function is applied to every element in the RDD
+Flatmap(func): The function is applied to every element in the RDD and the structure is flattened.
+Filter(condition): Returns the elements of the rdd which satisfy the given condition
+Union(): Returns the union of two rdds
+intersection(): Returns the intersection of two rdds
+groupbykey(): performs data shuffling i.e data grouping based on the key value
+reducebykey(): performs data aggregation
+Collect()
+
+https://data-flair.training/blogs/spark-rdd-operations-transformations-actions/
+
+
+
+https://youtu.be/mJZjD2FkOjU
+
+Secondary Namenode as primary Namenode | Hadoop Interview Questions
+
+Q4) Spark Session Vs Spark Context?
+Ans) https://youtu.be/ngWCBq58CJs
+
+https://youtu.be/MDbJoaqfBVc
+
+
+Q9) Hive Date functions
+Ans) datediff(), monthbetween(),dateformat()
+
+Q10) Hive String functions
+Ans) length, reverse
+
+
+Q6) Pandas Basic functions
+Ans) read_csv(), head(), describe(), astype(), loc[:], value_counts(), drop_duplicates(), groupby(), fillna(), 
+
+https://www.analyticsvidhya.com/blog/2021/05/pandas-functions-13-most-important/
+
+Q7) Numpy Basic functions
+Ans) min, max, shape, reshape, transpose
+
+Q8) Rdd Basic functions
+Ans) 
+Map(func): The function is applied to every element in the RDD
+Flatmap(func): The function is applied to every element in the RDD and the structure is flattened.
+Filter(condition): Returns the elements of the rdd which satisfy the given condition
+Union(): Returns the union of two rdds
+intersection(): Returns the intersection of two rdds
+groupbykey(): performs data shuffling i.e data grouping based on the key value
+reducebykey(): performs data aggregation
+Collect()
+
+https://data-flair.training/blogs/spark-rdd-operations-transformations-actions/
+
+
