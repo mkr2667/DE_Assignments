@@ -1,0 +1,19 @@
+Q) Find the result of different joins of Table A and Table B
+TableA	TableB
+Id                Id
+1		7
+2		NULL
+NULL		NULL
+3		3
+2		4
+4		4
+4		2
+6		2
+10		8
+
+Ans)
+Inner Join - Select * from TableA Inner Join TableB on TableA.id=TableB.id;
+Left Join - Select * from TableA Left Join TableB on TableA.id=TableB.id;
+Right Join - Select * from TableA Right Join TableB on TableA.id=TableB.id;
+Full Join(Outer Join) - Select * from TableA Full Join TableB on TableA.id=TableB.id
+Left Anti Join - Select * from TableA Left Join TableB on TableA.id=TableB.id Where Table.id IS NULL;
